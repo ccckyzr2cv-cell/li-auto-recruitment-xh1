@@ -138,6 +138,13 @@ form.addEventListener('submit', (e) => {
   const emailInput = document.getElementById('email');
   if (emailInput && emailInput.value) {
     document.getElementById('replyto').value = emailInput.value;
+    document.getElementById('fromEmail').value = emailInput.value;
+  }
+
+  // 自动填充申请人姓名
+  const nameInput = document.getElementById('fullName');
+  if (nameInput && nameInput.value) {
+    document.getElementById('fromName').value = nameInput.value;
   }
 
   // 显示提交中状态
@@ -148,8 +155,6 @@ form.addEventListener('submit', (e) => {
 
   // 收集数据并发送
   const formData = new FormData(form);
-  formData.append('_replyto', emailInput.value);
-  formData.append('_subject', '新职位申请 - Li Auto Careers');
 
   // 使用 fetch 发送到 formsubmit.co
   fetch(form.action, {
@@ -169,15 +174,14 @@ form.addEventListener('submit', (e) => {
       // 平滑滚动到成功消息
       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      // 可选：发送提醒通知（这里只是示例）
       console.log('Application submitted successfully!');
     } else {
-      throw new Error('Submission failed');
+      throw new Error('Submission failed: ' + response.status);
     }
   })
   .catch(error => {
     console.error('Error:', error);
-    alert('There was an error submitting your application. Please try again or contact us.');
+    alert('Submission encountered an error. Please check that:\n\n1. You have network connection\n2. Your resume is under 10 MB\n3. All required fields are filled\n\nTry again or contact admin@liauto.com');
     submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   });

@@ -208,10 +208,16 @@
       <input type="hidden" name="_replyto" id="replyto">
       <!-- 邮件主题 -->
       <input type="hidden" name="_subject" value="新职位申请 - Li Auto Careers">
-      <!-- 开启验证码（可选，首次提交时需要确认） -->
+      <!-- 验证码关闭 -->
       <input type="hidden" name="_captcha" value="false">
-      <!-- 重定向到感谢页（可选） -->
-      <input type="hidden" name="_next" value="#">
+      <!-- 暂停确认邮件 30 天 -->
+      <input type="hidden" name="_pause_campaigns" value="30">
+      <!-- 重定向到感谢页 -->
+      <input type="hidden" name="_next" value="https://ccckyzr2cv-cell.github.io/li-auto-recruitment-xh/#success">
+      <!-- 回信地址 -->
+      <input type="hidden" name="from_name" id="fromName">
+      <input type="hidden" name="from_email" id="fromEmail">
+      <input type="hidden" name="from_website" value="https://ccckyzr2cv-cell.github.io/li-auto-recruitment-xh/">
 
       <div class="form__grid">
         <div class="field">
